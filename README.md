@@ -12,7 +12,7 @@ Los experimentos se llevaron a cabo con un grupo de 30 voluntarios dentro de un 
 3. ejecuta el script, este se encargara de cargar los paquetes necesarios para su ejecucion correcta. 
 
 ## Input y Output de la función
-Entrada: La funcion toma los archivos dentro del directorio "UCI HAR Dataset", esta carpeta se obtiene al descomprimir el archivo del siguiente link http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-Salida: Produce el archivo tidy_data.txt que contiene el conjunto de datos procesado y ordenado para posterior analisis. 
+*Entrada: La funcion toma los archivos dentro del directorio "UCI HAR Dataset", esta carpeta se obtiene al descomprimir el archivo del siguiente link [UCI HAR Dataset](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+*Salida: Produce el archivo tidy_data.txt que contiene el conjunto de datos procesado y ordenado para posterior analisis. 
 
-Nota: el reporsitorio contiene un archivo (run_analysis.md) que describe el funcionamiento exacto de la funcion, ademas del archivo R de la misma. 
+######Nota: el reporsitorio contiene un archivo (run_analysis.md) que describe el funcionamiento exacto de la funcion, ademas del archivo R de la misma. 
