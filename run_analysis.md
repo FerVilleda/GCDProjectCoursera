@@ -60,7 +60,17 @@ dtTotalVars <- cbind(dtIds,dtMeanDevVar)
 ~~~
 
 ## Uses descriptive activity names to name the activities in the data set
-
+Para obtener los nombres de las actividades leemos el archivo **activity_labels.txt**, nuevamente asignamos nombres para evitar problemas y para hacer identificable el contenido del archivo. 
+~~~
+dtActNames <- read.table(file.path(pathIn, "activity_labels.txt"))
+setnames(dtActNames,names(dtActNames),c("activityNum","activityName"))
+~~~
+Obtenemos las actividdes de la columna activity de **dtTotalVars** que es el data table que contiene lo hecho anteriormente. Obtenemos los niveles de **act_group** con ayuda de la columna 2 de **dtActNames**. Finalmente asignamos lo realizado a la columna **activity** para hacer que los id se identifiquen con el nombre correspondiente al ser reemplazados. 
+~~~
+act_group <- factor(dtTotalVars$activity)
+levels(act_group) <- dtActNames[,2]
+dtTotalVars$activity <- act_group
+~~~
 
 ## Appropriately labels the data set with descriptive variable names
 Este paso se realiza en el segundo punto de este manual. Se asginan los nombres de las variables al conjunto con ayuda del vector que obtuvimos al leer el archivo **features.txt** 
