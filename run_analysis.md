@@ -78,4 +78,22 @@ Este paso se realiza en el segundo punto de este manual. Se asginan los nombres 
 setnames(dtMeanDevVar,names(dtMeanDevVar),as.character(features))
 ~~~
 
-## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+## Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+Hacemos el fundido del conjunto de datos con la funcion **melt**, obtendremos las variables por cada registro con su valor registrado correspondiente. 
+~~~
+dtBase <- melt(dtTotalVars,(id.vars=c("subject","activity")))
+~~~
+Despues usaremos la funcion **dcast** para refundir los datos y acomodarlo de acuerdo a ciertas variables que daremos a la funcion como argumento, tambien aplicaremos a cada agrupacion la funcion mean. Las variables se acomodaran por subject y activity. 
+~~~
+dtTidy <- dcast(dtBase, subject + activity ~ variable, mean)
+~~~
+Hasta este punto tenemos los datos acomodados y hemos calculado el promedio de cada una. Acomodaremos los nombres por ultima vez para indicar que se ha obtenido la media de los datos. 
+~~~
+names(dtTidy)[-c(1:2)] <- paste("mean of" , names(dtTidy)[-c(1:2)] )
+~~~
+Por ultimo crearemos el conjunto de datos ordenado en un archivo .txt que se llamara **tidy_dataset.txt.** con separador **,**
+~~~
+write.table(dtTidy, "tidy_dataSet.txt", sep = ",")
+~~~
+
+
