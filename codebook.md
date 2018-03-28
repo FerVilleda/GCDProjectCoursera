@@ -1,7 +1,7 @@
-#Codebook
+# Codebook
 Fue generado de manera simultanea con run_analysis.R.
 
-##Variables 
+## Variables 
 Nombre | Descripcion
 -- | --
 path|  Directorio donde esta la funcion y la carpeta de archivos. 
@@ -9,3 +9,8 @@ pathIn| directorio actual + "UCI HAR Dataset". Para acceder sin cambiar el direc
 dtSubjectTrain | Contiene los datos dentro del archivo subject_train.txt
 dtActivityTrain | Contiene los datos dentro del archivo subject_test.txt
 dtTrain | Contiene los archivos almacenados en X_train.txt y posteriormente la union entre las columnas de dtSubjectTrain, dtActivityTrain y dtTrain. 
+
+| Cabecera A | Cabecera B |
+| ---------- | ---------- |
+| Campo A0   | Campo B0   |
+| Campo A1   | Campo B1   |
