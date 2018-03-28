@@ -38,8 +38,34 @@ dtTotal <- rbind(dtTrain,dtTest)
 ~~~
 
 ## Extracts only the measurements on the mean and standard deviation for each measurement.
-
+Leemos el archivo **features.txt** que contiene los nombres de las variables de los datos de x. Es decir las variables observadas, y asignamos nombres a las columnas para que sean facilmente identificables. 
+~~~
+dtFeatures <- read.table(file.path(pathIn, "features.txt"))
+setnames(dtFeatures, names(dtFeatures), c("featureNum","featureName"))
+~~~
+Utilizando una expresion regular obtendremos las variables que contienen la palabra mean o std en el nombre, y las seleccionmos en **dtFeatures**. Obtenemos la columna que contiene el nombre y lo guardamos en un vector de nombre **features**
+~~~
+dtFeatures <- dtFeatures[grepl("mean\\(\\)|std\\(\\)", dtFeatures$featureName),]
+features <- dtFeatures[,2]
+~~~
+Seleccionamos y asignamos a la variable **dtMeanDevVar** los registros de dtTotal en las columnas que corresponden a features. Le asignamos los nombres correspondientes.  
+~~~
+dtMeanDevVar <- dtTotal[,features]
+setnames(dtMeanDevVar,names(dtMeanDevVar),as.character(features))
+~~~
+Sacamos las columnas de subject y activity para unirlas al conjunto anterior. Obtenemos el conjunto **dtTotalVars**
+~~~
+dtIds <- select(dtTotal,subject,activity)
+dtTotalVars <- cbind(dtIds,dtMeanDevVar)
+~~~
 
 ## Uses descriptive activity names to name the activities in the data set
+
+
 ## Appropriately labels the data set with descriptive variable names
+Este paso se realiza en el segundo punto de este manual. Se asginan los nombres de las variables al conjunto con ayuda del vector que obtuvimos al leer el archivo **features.txt** 
+~~~
+setnames(dtMeanDevVar,names(dtMeanDevVar),as.character(features))
+~~~
+
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
